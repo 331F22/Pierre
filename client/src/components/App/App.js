@@ -3,7 +3,7 @@ import "./App.css";
 import AddEntry from "../AddEntry.jsx";
 import CurrentEntries from "../CurrentEntries.jsx";
 import Footer from "../Footer.jsx";
-import logo from './BSFlogo.jpg';
+import logo from '../images/BSFlogo.jpg';
 
 function App() {
   return (
