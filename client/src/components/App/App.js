@@ -11,11 +11,10 @@ function App() {
       <img className="logo" src={logo} alt="BSF logo" />
       <div className="Mission">
         <p>
-          <div className="MissionHeader">Mission Statment</div>
+          <div className="MissionHeader"></div>
             <div className="MissionQuotes">
-              "Offering educational and competitive programs in Alpine, Nordic,
-              Freestyle, and Freeskiing. And grooming cross-country ski trails for
-              the Bozeman community."
+              Volunteer and help your community! If you volunteer with BSF you will not only help your community but 
+              also receive a FREE ski pass to Bridger Bowl Ski Area!
             </div> 
         </p>
       </div>
