@@ -3,11 +3,12 @@ import "./App.css";
 import AddEntry from "../AddEntry.jsx";
 import CurrentEntries from "../CurrentEntries.jsx";
 import Footer from "../Footer.jsx";
+import logo from './BSFlogo.jpg';
 
 function App() {
   return (
     <div className="App">
-      <img src="../../../img/BSFlogo.png" alt="bsf logo" />
+      <img className="logo" src={logo} alt="BSF logo" />
       <div className="Mission">
         <p>
           Offering educational and competitive programs in Alpine, Nordic,
