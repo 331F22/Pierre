@@ -56,7 +56,6 @@ const AddEntry = () => {
 
   return (
     <div className="addEntry">
-      <h2>Add an Entry</h2>
       <div id="userInput">
         <div>
           <label htmlFor="firstName">First Name</label>

@@ -11,12 +11,16 @@ function App() {
       <img className="logo" src={logo} alt="BSF logo" />
       <div className="Mission">
         <p>
-          Offering educational and competitive programs in Alpine, Nordic,
-          Freestyle, and Freeskiing. And grooming cross-country ski trails for
-          the Bozeman community.
+          <div className="MissionHeader">Mission Statment</div>
+            <div className="MissionQuotes">
+              "Offering educational and competitive programs in Alpine, Nordic,
+              Freestyle, and Freeskiing. And grooming cross-country ski trails for
+              the Bozeman community."
+            </div> 
         </p>
       </div>
-      <h1>Entries</h1>
+      <hr></hr>
+      <h1>Volunteer Now!</h1>
 
       <AddEntry />
       <hr />
