@@ -2,8 +2,9 @@ import React from "react";
 import "./App.css";
 import AddEntry from "../AddEntry.jsx";
 import CurrentEntries from "../CurrentEntries.jsx";
+import OrderVolunteers from "../OrderVolunteersByRepeatedService.jsx";
 import Footer from "../Footer.jsx";
-import logo from '../images/BSFlogo.jpg';
+import logo from "../images/BSFlogo.jpg";
 
 function App() {
   return (
@@ -12,11 +13,11 @@ function App() {
       <div className="Mission">
         <p>
           <div className="MissionHeader">Mission Statment</div>
-            <div className="MissionQuotes">
-              "Offering educational and competitive programs in Alpine, Nordic,
-              Freestyle, and Freeskiing. And grooming cross-country ski trails for
-              the Bozeman community."
-            </div> 
+          <div className="MissionQuotes">
+            "Offering educational and competitive programs in Alpine, Nordic,
+            Freestyle, and Freeskiing. Grooming cross-country ski trails for the
+            Bozeman community."
+          </div>
         </p>
       </div>
       <hr></hr>
@@ -25,6 +26,8 @@ function App() {
       <AddEntry />
       <hr />
       <CurrentEntries />
+      <hr />
+      <OrderVolunteers />
       <hr />
       <Footer />
     </div>
