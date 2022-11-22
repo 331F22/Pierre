@@ -29,6 +29,18 @@ app.get("/api/read", (req, res) => {
   });
 });
 
+// Order volunteers by number of repeated service
+app.get("/api/orderVolunteers", (req, res) => {
+  const sqlSelect =
+    "SELECT first_name,last_name, COUNT(email_address) AS volunteerCount FROM volunteers GROUP BY email_address ORDER BY volunteerCount DESC";
+  db.query(sqlSelect, (err, result) => {
+    if (err) {
+      throw err;
+    }
+    res.send(result);
+  });
+});
+
 // CREATE
 app.post("/api/create", (req, res) => {
   const fn = req.body.first;

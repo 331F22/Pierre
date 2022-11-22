@@ -205,4 +205,3 @@ const CurrentEntries = () => {
 };
 
 export default CurrentEntries;
-
