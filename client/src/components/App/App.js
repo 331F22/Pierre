@@ -12,14 +12,12 @@ function App() {
       <img className="logo" src={logo} alt="BSF logo" />
       <div className="Mission">
         <p>
-<<<<<<< HEAD
-=======
           <div className="MissionHeader"></div>
-            <div className="MissionQuotes">
-              Volunteer and help your community! If you volunteer with BSF you will not only help your community but 
-              also receive a FREE ski pass to Bridger Bowl Ski Area!
-            </div> 
->>>>>>> 596b2f4764b9aa4ba3154ca22abb7e5fbe4091c7
+          <div className="MissionQuotes">
+            Volunteer and help your community! If you volunteer with BSF you
+            will not only help your community but also receive a FREE ski pass
+            to Bridger Bowl Ski Area!
+          </div>
         </p>
       </div>
       <hr></hr>
