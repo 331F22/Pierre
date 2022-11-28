@@ -1,5 +1,8 @@
 import { useState, useRef } from 'react';
+
+import ToggleSwitch from "./ToggleSwitch";
 import axios from 'axios'
+import React from 'react';
 
 const AddEntry = () => {
 
@@ -11,6 +14,8 @@ const AddEntry = () => {
   const ref1 = useRef(null);
   const ref2 = useRef(null);
   const ref3 = useRef(null);
+
+  const waiverBox = document.querySelector('#waiver')
 
   // CREATE (POST)
   function submitEntry() {
@@ -30,6 +35,11 @@ const AddEntry = () => {
   function refreshPage() {
     window.location.reload(false);
   }
+  function waiver() {
+    window.open('https://www.waiverfile.com');
+  }
+
+
   
   return (
     <div className="addEntry">
@@ -47,14 +57,28 @@ const AddEntry = () => {
           <label htmlFor="email">Email Address</label>
           <input ref={ref3} id="email" type="email" name="email" onChange={(e) => setEmailAddress(e.target.value)} />
         </div>
+
+      </div>
+
+      <div className="container1">
+        <React.Fragment>
+          <h6>Sign Digital Waiver?</h6>
+          <ToggleSwitch label ="waiver" />
+        </React.Fragment>
+      </div>
+      <div id='userInput'>
         <button className="submitBtn"
           onClick={() => {
-            if (firstName.length > 0 && lastName.length > 0 && emailAddress.length > 0) {
+            if (firstName.length > 0 && lastName.length > 0 && emailAddress.length > 0 && !waiverBox.checked) {
               submitEntry(); refreshPage();
+            }
+            else if (firstName.length > 0 && lastName.length > 0 && emailAddress.length > 0 && waiverBox.checked){
+                  waiver(); submitEntry(); refreshPage();
             }
           }}
         >Add Entry</button>
       </div>
+
     </div>
   )
 }
