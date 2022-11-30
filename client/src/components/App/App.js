@@ -11,7 +11,7 @@ function App() {
       <h1>Entries</h1>
 
       <AddEntry />
-        <WaiverPage />
+      
       <hr />
       <CurrentEntries />
       <hr />
