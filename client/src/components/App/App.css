@@ -32,10 +32,10 @@ h1{
   width: 100%;
   padding: 10px 0;
   font-size: 16px;
-  color: #fff;
+  color: black;
   margin-bottom: 30px;
   border: none;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid black;
   outline: none;
   background: transparent;
 }
