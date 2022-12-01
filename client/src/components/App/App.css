@@ -4,6 +4,7 @@ body {
 
 #BSF_Logo{
   padding: 50px;
+  align-items: center;
   width: 50%;
 }
 
