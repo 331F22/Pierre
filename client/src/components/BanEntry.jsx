@@ -14,7 +14,7 @@ const BanEntry = () => {
 
   // CREATE (POST)
   function submitEntry() {
-    axios.post(`${process.env.REACT_APP_HOST}/api/createban`, { first: firstName, last: lastName, email: emailAddress }).then((response) => {
+    axios.post(`${process.env.REACT_APP_HOST}/api/create`, { first: firstName, last: lastName, email: emailAddress }).then((response) => {
       setEntryList([...entryList, { first_name: firstName, last_name: lastName, email_address: emailAddress }]
       )
     })
