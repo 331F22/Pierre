@@ -179,7 +179,6 @@ const CurrentEntries = () => {
                 }
               }}>update</button>
 
-              /*BAN*/
               <button className='update' onClick={() => {
                 if (newEmail.length > 0) {
                   updateEmail(val.email_address);
@@ -195,7 +194,6 @@ const CurrentEntries = () => {
         <div className="editField editGui">
           <button id="editButton" onClick={handleEditList}>Edit List</button>
           <button id="doneButton" onClick={handleFinishedEditing}>Finished Editing</button>
-          <button id="banButton" onClick={handleBanVolunteer}>Ban Volunteer</button>
           <input id="editPasscodeInput" ref={refPass} type="password"
             placeholder='Enter passcode' onChange={checkPasscode}
             onBlur={(e) => abortPasscodeAttempt(e.target.value)} />
