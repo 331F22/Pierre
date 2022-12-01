@@ -13,8 +13,6 @@ function App() {
 
       <AddEntry />
       <hr />
-      <BanEntry />
-      <hr />
       <CurrentEntries />
       <hr />
       <Footer />
