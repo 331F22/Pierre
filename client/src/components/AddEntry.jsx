@@ -47,6 +47,10 @@ const AddEntry = () => {
           <label htmlFor="email">Email Address</label>
           <input ref={ref3} id="email" type="email" name="email" onChange={(e) => setEmailAddress(e.target.value)} />
         </div>
+        <div className="confirmEmailField" >
+          <label htmlFor="email">Confirm Email Address</label>
+          <input ref={ref3} id="email" type="email" name="email" onChange={(e) => setEmailAddress(e.target.value)} />
+        </div>
         <button className="submitBtn"
           onClick={() => {
             if (firstName.length > 0 && lastName.length > 0 && emailAddress.length > 0) {
