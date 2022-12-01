@@ -16,7 +16,7 @@ h1{
 }
 
 .App {
-  font-family: "Lucida Console", "Courier New", monospace;
+  font-family: "Lucida Console";
   max-width:600px;
   margin: auto;
 }
