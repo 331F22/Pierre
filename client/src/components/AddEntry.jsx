@@ -48,8 +48,8 @@ const AddEntry = () => {
           <input ref={ref3} id="email" type="email" name="email" onChange={(e) => setEmailAddress(e.target.value)} />
         </div>
         <div className="confirmEmailField" >
-          <label htmlFor="email">Confirm Email Address</label>
-          <input ref={ref3} id="email" type="email" name="email" onChange={(e) => setEmailAddress(e.target.value)} />
+          <label htmlFor="Confirmemail">Confirm Email Address</label>
+          <input ref={ref4} id="Confirmemail" type="Confirmemail" name="Confirmemail" onChange={(e) => setConfirmEmailAddress(e.target.value)} />
         </div>
         <button className="submitBtn"
           onClick={() => {
