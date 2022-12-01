@@ -42,19 +42,6 @@ const CurrentEntries = () => {
     }) //close .then()
   }
 
-  // BAN 
-  const banEntry = (email) => { // deletes ALL such email instances in the database
-    axios.delete(`${process.env.REACT_APP_HOST}/api/delete/${email}`).then((response) => {
-      let objToDelete = getObjectByValue(email)
-      const index = entryList.indexOf(objToDelete) // deletes ONE instance in the state var
-      if (index > -1) {
-        let entryListCopy = [...entryList] // copy
-        entryListCopy.splice(index, 1) // remove index
-        setEntryList(entryListCopy)
-      }
-    }) //close .then()
-  }
-
   // UPDATE (PUT)
   const updateEmail = (email) => { // replaces ALL such email instances in the database
     axios.put(`${process.env.REACT_APP_HOST}/api/update`, { old: email, new: newEmail }).then((response) => {
@@ -105,23 +92,6 @@ const CurrentEntries = () => {
   }
 
   function handleFinishedEditing() {
-    const editPasscodeInput = document.getElementById('editPasscodeInput')
-    const editButton = document.getElementById('editButton')
-    const doneButton = document.getElementById('doneButton')
-    const collection = document.getElementsByClassName("editControls")
-    const submitEmailsButton = document.getElementById('submitEmailsButton')
-
-    for (let i = 0; i < collection.length; i++)
-      collection[i].style.display = 'none'
-    editPasscodeInput.style.visibility = 'hidden'
-    doneButton.style.display = 'none'
-    editButton.style.display = 'inline'
-    editButton.innerHTML = "Edit List"
-    submitEmailsButton.style.display = 'none'
-  }
-
-  //TODO: Ban Button
-  function handleBanVolunteer() {
     const editPasscodeInput = document.getElementById('editPasscodeInput')
     const editButton = document.getElementById('editButton')
     const doneButton = document.getElementById('doneButton')
