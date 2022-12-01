@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import AddEntry from '../AddEntry.jsx';
+import BanEntry from '../BanEntry.jsx';
 import CurrentEntries from '../CurrentEntries.jsx';
 import Footer from '../Footer.jsx'
 
@@ -11,6 +12,8 @@ function App() {
       <h1>Entries</h1>
 
       <AddEntry />
+      <hr />
+      <BanEntry />
       <hr />
       <CurrentEntries />
       <hr />
