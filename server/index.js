@@ -71,7 +71,7 @@ app.put("/api/update", (req, res) => {
 
 
 // READ Ban
-app.get("/api/read", (req, res) => {
+app.getban("/api/readban", (req, res) => {
     const sqlSelect = "SELECT * FROM banned;"
     db.query(sqlSelect, (err, result) => {
         if(err){
@@ -82,7 +82,7 @@ app.get("/api/read", (req, res) => {
 })
 
 // CREATE Ban
-app.post("/api/create", (req, res) => {
+app.postban("/api/createban", (req, res) => {
     const fn = req.body.first
     const ln = req.body.last
     const ea = req.body.email
@@ -104,7 +104,7 @@ app.post("/api/create", (req, res) => {
 })
 
 // DELETE Ban
-app.delete("/api/delete/:emailAddress", (req, res) => {
+app.deleteban("/api/deleteban/:emailAddress", (req, res) => {
     const ea = req.params.emailAddress;
     console.log(ea)
     const sqlDelete = "DELETE FROM banned WHERE email_address = ?";
@@ -116,7 +116,7 @@ app.delete("/api/delete/:emailAddress", (req, res) => {
 })
 
 // UPDATE Ban
-app.put("/api/update", (req, res) => {
+app.putban("/api/updateban", (req, res) => {
     // console.log(req)
 
     const ne = req.body.new;
