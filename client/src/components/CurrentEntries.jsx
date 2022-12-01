@@ -43,17 +43,17 @@ const CurrentEntries = () => {
   }
 
   // BAN 
-  // const banEntry = (email) => { // deletes ALL such email instances in the database
-  //   axios.delete(`${process.env.REACT_APP_HOST}/api/delete/${email}`).then((response) => {
-  //     let objToDelete = getObjectByValue(email)
-  //     const index = entryList.indexOf(objToDelete) // deletes ONE instance in the state var
-  //     if (index > -1) {
-  //       let entryListCopy = [...entryList] // copy
-  //       entryListCopy.splice(index, 1) // remove index
-  //       setEntryList(entryListCopy)
-  //     }
-  //   }) //close .then()
-  // }
+  const banEntry = (email) => { // deletes ALL such email instances in the database
+    axios.delete(`${process.env.REACT_APP_HOST}/api/delete/${email}`).then((response) => {
+      let objToDelete = getObjectByValue(email)
+      const index = entryList.indexOf(objToDelete) // deletes ONE instance in the state var
+      if (index > -1) {
+        let entryListCopy = [...entryList] // copy
+        entryListCopy.splice(index, 1) // remove index
+        setEntryList(entryListCopy)
+      }
+    }) //close .then()
+  }
 
   // UPDATE (PUT)
   const updateEmail = (email) => { // replaces ALL such email instances in the database
@@ -120,6 +120,23 @@ const CurrentEntries = () => {
     submitEmailsButton.style.display = 'none'
   }
 
+  //TODO: Ban Button
+  function handleBanVolunteer() {
+    const editPasscodeInput = document.getElementById('editPasscodeInput')
+    const editButton = document.getElementById('editButton')
+    const doneButton = document.getElementById('doneButton')
+    const collection = document.getElementsByClassName("editControls")
+    const submitEmailsButton = document.getElementById('submitEmailsButton')
+
+    for (let i = 0; i < collection.length; i++)
+      collection[i].style.display = 'none'
+    editPasscodeInput.style.visibility = 'hidden'
+    doneButton.style.display = 'none'
+    editButton.style.display = 'inline'
+    editButton.innerHTML = "Edit List"
+    submitEmailsButton.style.display = 'none'
+  }
+
   function checkPasscode(e) {
     const editButton = document.getElementById('editButton')
     if ((e.target.value) === SECRET) {
@@ -153,20 +170,21 @@ const CurrentEntries = () => {
 
             <div className="editControls editGui">
               <button className='delete' onClick={() => {
-
                 deleteEntry(val.email_address)
               }}>delete</button>
-
-              //Ban button stuff 
-              <button className='ban' onClick={() => {
-              deleteEntry(val.email_address)
-              }}>ban</button>
 
               <button className='update' onClick={() => {
                 if (newEmail.length > 0) {
                   updateEmail(val.email_address);
                 }
               }}>update</button>
+
+              <button className='update' onClick={() => {
+                if (newEmail.length > 0) {
+                  updateEmail(val.email_address);
+                }
+              }}>ban</button>
+
               <input type="email" className="updateInput" placeholder={val.email_address}
                 onChange={(e) => setNewEmail(e.target.value)} />
             </div>
