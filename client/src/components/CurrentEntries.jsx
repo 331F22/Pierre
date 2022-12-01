@@ -42,6 +42,19 @@ const CurrentEntries = () => {
     }) //close .then()
   }
 
+  // BAN 
+  // const banEntry = (email) => { // deletes ALL such email instances in the database
+  //   axios.delete(`${process.env.REACT_APP_HOST}/api/delete/${email}`).then((response) => {
+  //     let objToDelete = getObjectByValue(email)
+  //     const index = entryList.indexOf(objToDelete) // deletes ONE instance in the state var
+  //     if (index > -1) {
+  //       let entryListCopy = [...entryList] // copy
+  //       entryListCopy.splice(index, 1) // remove index
+  //       setEntryList(entryListCopy)
+  //     }
+  //   }) //close .then()
+  // }
+
   // UPDATE (PUT)
   const updateEmail = (email) => { // replaces ALL such email instances in the database
     axios.put(`${process.env.REACT_APP_HOST}/api/update`, { old: email, new: newEmail }).then((response) => {
@@ -143,6 +156,12 @@ const CurrentEntries = () => {
 
                 deleteEntry(val.email_address)
               }}>delete</button>
+
+              //Ban button stuff 
+              <button className='ban' onClick={() => {
+              deleteEntry(val.email_address)
+              }}>ban</button>
+
               <button className='update' onClick={() => {
                 if (newEmail.length > 0) {
                   updateEmail(val.email_address);
