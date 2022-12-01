@@ -4,6 +4,7 @@ body {
 
 #BSF_Logo{
   padding: 50px;
+  padding-bottom: 200px;
   display: flex;
   width: 50%;
   margin-left: auto;
