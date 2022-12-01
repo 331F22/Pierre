@@ -10,11 +10,6 @@ body {
   margin-right: auto;
 }
 
-h1{
-  font-size: 50px;
-  color: rgb(175, 20, 20);
-}
-
 .App {
   font-family: 'Montserrat',sans-serif;
   max-width:600px;
@@ -25,6 +20,7 @@ h1{
   margin-left: auto;
   margin-right: auto;
   width: 500px;
+  padding-top: 200px;;
   padding: 40px;
   background: white;
   box-sizing: border-box;
