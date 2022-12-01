@@ -29,13 +29,15 @@ h1{
   margin: auto;
 }
 #userInput input{
-  width: 90%;
-  margin: 10px;
-  padding: 10px;
-  font-size: 2rem;
-  border-radius: 5px;
-  color: #333;
-  background-color:rgba(135, 206, 235, 0.3);
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
 }
 #firstLastName {
   display: grid;
