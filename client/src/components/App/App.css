@@ -73,6 +73,11 @@ body {
   padding-top: 60px;
 }
 
+.editbutton{
+  color: white;
+  background-color:  rgb(175, 20, 20);;
+}
+
 .editField{
   margin: 20px 0;
 }
