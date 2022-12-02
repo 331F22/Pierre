@@ -78,6 +78,18 @@ body {
   background-color:  rgb(175, 20, 20);;
 }
 
+#editPasscodeInput{
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: black;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  background: transparent
+}
+
 .editField{
   margin: 20px 0;
 }
