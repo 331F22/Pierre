@@ -9,10 +9,9 @@ function App() {
 
   return (
     <div className="App">
-      
 
       <AddEntry />
-      <hr />
+      <div id = "AddEntryLine"><hr /></div>
       <CurrentEntries />
       <hr />
       <Footer />

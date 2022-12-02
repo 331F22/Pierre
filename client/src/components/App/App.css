@@ -69,10 +69,6 @@ body {
   background-color:  rgb(175, 20, 20);;
 }
 
-.currentEntries{
-  padding-top: 60px;
-}
-
 #editButton{
   color: white;
   background-color:  rgb(175, 20, 20);;
@@ -125,4 +121,7 @@ body {
 }
 #submitEmailsButton{
   display: none;
+}
+#addEntryLine{
+  padding: 100px;
 }
