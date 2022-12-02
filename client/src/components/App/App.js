@@ -11,7 +11,7 @@ function App() {
     <div className="App">
 
       <AddEntry />
-      <div id = "AddEntryLine"><hr /></div>
+      <div id ='AddEntryLine'><hr /> </div>
       <CurrentEntries />
       <hr />
       <Footer />
