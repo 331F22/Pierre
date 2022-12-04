@@ -62,110 +62,38 @@ const CurrentEntries = () => {
     }
   }
 
-  const refPass = useRef(null);
-
-  function handleEditList(e) {
-    const collection = document.getElementsByClassName("editControls")
-    const editButton = document.getElementById('editButton')
-    const doneButton = document.getElementById('doneButton')
-    const editPasscodeInput = document.getElementById('editPasscodeInput')
-    const submitEmailsButton = document.getElementById('submitEmailsButton')
-
-    if (passcode === SECRET) {
-      for (let i = 0; i < collection.length; i++)
-        collection[i].style.display = 'block'
-      doneButton.style.display = 'inline'
-      editButton.style.display = 'none'
-      editPasscodeInput.style.visibility = 'hidden'
-      submitEmailsButton.style.display = 'block'
-
-    } else {
-      for (let i = 0; i < collection.length; i++)
-        collection[i].style.display = 'none'
-      doneButton.style.display = 'none'
-      editButton.style.display = 'inline'
-      editPasscodeInput.style.visibility = 'visible'
-      editPasscodeInput.focus()
-    }
-    setPasscode('')
-    refPass.current.value = ''
-  }
-
-  function handleFinishedEditing() {
-    const editPasscodeInput = document.getElementById('editPasscodeInput')
-    const editButton = document.getElementById('editButton')
-    const doneButton = document.getElementById('doneButton')
-    const collection = document.getElementsByClassName("editControls")
-    const submitEmailsButton = document.getElementById('submitEmailsButton')
-
-    for (let i = 0; i < collection.length; i++)
-      collection[i].style.display = 'none'
-    editPasscodeInput.style.visibility = 'hidden'
-    doneButton.style.display = 'none'
-    editButton.style.display = 'inline'
-    editButton.innerHTML = "Edit List"
-    submitEmailsButton.style.display = 'none'
-  }
-
-  function checkPasscode(e) {
-    const editButton = document.getElementById('editButton')
-    if ((e.target.value) === SECRET) {
-      editButton.innerHTML = "OK"
-      editButton.focus()
-    }
-    else {
-      editButton.innerHTML = "Edit List"
-    }
-    setPasscode(e.target.value)
-  }
-
-  function abortPasscodeAttempt(e) {
-    const editPasscodeInput = document.getElementById('editPasscodeInput')
-    if (e !== SECRET) {
-      setPasscode('')
-      refPass.current.value = ''
-      editPasscodeInput.style.visibility = 'hidden'
-    }
-  }
-
-  return (
-
-    <div className="currentEntries posRel">
-      <h2>Current Entries</h2>
-
-      <div className='userData'>
-        {entryList.map((val, k) => {
-          return (<div key={k}>
-            <div>{val.last_name}, {val.first_name} <span className="emailListed">{val.email_address}</span> </div>
-
-            <div className="editControls editGui">
-              <button className='delete' onClick={() => {
-
-                deleteEntry(val.email_address)
-              }}>delete</button>
-              <button className='update' onClick={() => {
-                if (newEmail.length > 0) {
-                  updateEmail(val.email_address);
-                }
-              }}>update</button>
-              <input type="email" className="updateInput" placeholder={val.email_address}
-                onChange={(e) => setNewEmail(e.target.value)} />
-            </div>
-          </div>)
-
-        })}
-        <div className="editField editGui">
-          <button id="editButton" onClick={handleEditList}>Edit List</button>
-          <button id="doneButton" onClick={handleFinishedEditing}>Finished Editing</button>
-          <input id="editPasscodeInput" ref={refPass} type="password"
-            placeholder='Enter passcode' onChange={checkPasscode}
-            onBlur={(e) => abortPasscodeAttempt(e.target.value)} />
-        </div>
-        <button id="submitEmailsButton" className='submitBtn' onClick={() => alert('TODO: Send It!')}>Email Vouchers</button>
-
-      </div>
-    </div>
-  )
+  //Send emails
+  const sendEmails = () =>{
+    
+  //email template code
+  const options = {
+    method: 'POST',
+    headers: {
+      accept: 'application/json',
+      'content-type': 'application/json',
+      'api-key': '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'
+    },
+    body: JSON.stringify({
+      sender: {name: 'BSF Dummy (who it from)', email: 'bsfdummy12@gmail.com'},
+      inlineImageActivation: false,
+      params: {newKey: 'New Value'},
+      sendAtBestTime: false,
+      abTesting: false,
+      ipWarmupEnable: false,
+      tag: 'BSF Volunteer Codes',
+      name: 'BSF Volunteer Codes',
+      htmlContent: '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml"> <head>   <meta http-equiv="X-UA-Compatible" content="IE=edge" />   <meta name="viewport" content="width=device-width, initial-scale=1" />   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />   <meta name="apple-mobile-web-app-capable" content="yes" />   <meta name="apple-mobile-web-app-status-bar-style" content="black" />   <meta name="format-detection" content="telephone=no" />   <title>SendinBlue</title>   <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,400,600,700,800,400italic" rel="stylesheet" type="text/css" />   <style type="text/css">     *{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}     body{font-family:helvetica,arial,sans-serif;}     table{margin:0 auto;}     div,a,li,td{-webkit-text-size-adjust:none;}     @media screen{body{font-family:"open sans",helvetica,arial,sans-serif;}}     @media only screen and (max-width:640px){table[class=full]{width:100%!important;}}     @media only screen and (max-width:479px){table[class=fullcenter]{width:100%!important;text-align:center!important;}}   </style> </head> <body style="margin:0;padding:0;"> <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center" bgcolor="#ffffff" style="background:#ffffff;">   <tbody>   <tr>     <td>       <table class="full" align="center" width="570" border="0" cellpadding="0" cellspacing="0" style="padding:0 5px;">         <tbody>         <tr>           <td height="30" width="100%"></td>         </tr>         <!---------------------- begin Content -------------------->         <!-- Title -->         <tr>           <td align="center" style="padding:0 20px;text-align:center;font-size:20px;color:#676a6c;line-height:30px;font-weight:600;" valign="middle" width="100%">             Thank you for Volunteering with Bridger Ski Foundation!           </td>         </tr>         <!-- /Title -->         <tr>           <td height="30" width="100%"></td>         </tr>         <!-- Button -->          <!-- Texte -->         <tr>           <td align="center" style="padding:0 20px;text-align:center;font-size:14px;color:#676a6c;line-height:24px;" valign="middle" width="100%">             Here is your Bridger ski ticket code:                        tempskicode           </td>         </tr>         <!-- /Text -->         <tr>           <td height="30" width="100%"></td>         </tr>         <!---------------------- end Content ---------------------->         <tr>           <td height="40" width="100%"></td>         </tr>         <tr>         </tr>         <tr>           <td height="40" width="100%"></td>         </tr>         </tbody>       </table>     </td>   </tr>   </tbody> </table> </body> </html>',
+      replyTo: 'bsfdummy12@gmail.com',
+      toField: '{volunteer first name} {volunteer last name}',
+      subject: 'BSF Volunteer Codes'
+    })
+  };
+  
+  fetch('https://api.sendinblue.com/v3/emailCampaigns', options)
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(err => console.error(err));
+} 
 }
 
 export default CurrentEntries;
