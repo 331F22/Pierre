@@ -63,6 +63,7 @@ const CurrentEntries = () => {
   }
 
   //Send emails
+  /*
   const sendEmails = () =>{
     
   //email template code
@@ -94,6 +95,9 @@ const CurrentEntries = () => {
     .then(response => console.log(response))
     .catch(err => console.error(err));
 } 
+*/
+
 }
+
 
 export default CurrentEntries;
