@@ -17,7 +17,7 @@ app.use(cors())
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
-// READ
+// READ Add 
 app.get("/api/read", (req, res) => {
     const sqlSelect = "SELECT * FROM volunteers;"
     db.query(sqlSelect, (err, result) => {
@@ -28,7 +28,7 @@ app.get("/api/read", (req, res) => {
     })
 })
 
-// CREATE
+// CREATE Add
 app.post("/api/create", (req, res) => {
     const fn = req.body.first
     const ln = req.body.last
@@ -41,7 +41,7 @@ app.post("/api/create", (req, res) => {
     })
 })
 
-// DELETE
+// DELETE Add
 app.delete("/api/delete/:emailAddress", (req, res) => {
     const ea = req.params.emailAddress;
     console.log(ea)
@@ -53,7 +53,7 @@ app.delete("/api/delete/:emailAddress", (req, res) => {
     })
 })
 
-// UPDATE
+// UPDATE Add
 app.put("/api/update", (req, res) => {
     // console.log(req)
 
@@ -67,6 +67,8 @@ app.put("/api/update", (req, res) => {
         res.send(result)
     })
 })
+
+
 
 const PORT = process.env.EXPRESSPORT;
 const msg = `Running on PORT ${PORT}`
