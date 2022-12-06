@@ -59,6 +59,29 @@ app.post("/api/addtoban", (req, res) => {
 })
 
 
+app.delete("/api/deleteban/:emailAddress", (req, res) => {
+    const ea = req.params.emailAddress;
+    console.log(ea)
+    const sqlDelete = "DELETE FROM banned WHERE email_address = ?";
+    db.query(sqlDelete, [ea], (err, result) => {
+        if(err) throw err
+        console.log("Server: deleted: ", ea)
+        res.send(result)
+    })
+})
+
+// READ Add 
+app.get("/api/readbanned", (req, res) => {
+    const sqlSelect = "SELECT * FROM banned;"
+    db.query(sqlSelect, (err, result) => {
+        if(err){
+            throw err;
+        }
+        res.send(result);
+    })
+})
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 

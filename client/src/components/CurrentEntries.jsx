@@ -6,12 +6,20 @@ const CurrentEntries = () => {
   const SECRET = process.env.REACT_APP_PASSCODE
 
   const [entryList, setEntryList] = useState([])
-
+  const [bannedentryList, setbannedEntryList] = useState([])
 
   // READ (GET)
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_HOST}/api/read`).then((response) => {
       setEntryList(response.data)
+    })
+  }, [])
+
+
+  // READ (Ban)
+  useEffect(() => {
+    axios.get(`${process.env.REACT_APP_HOST}/api/readbanned`).then((response) => {
+      setbannedEntryList(response.data)
     })
   }, [])
 
@@ -29,6 +37,19 @@ const CurrentEntries = () => {
     return objectWithValue
   }
 
+  function getbannedObjectByValue(objVal) {
+    let objectWithValue = {}
+    bannedentryList.forEach(entry => {
+      if (Object.values(entry).indexOf(objVal) > -1) { // email value is inside obj inside array
+        console.log('entry', entry)
+        objectWithValue = entry
+      }
+    })
+    return objectWithValue
+  }
+
+
+
   // DELETE
   const deleteEntry = (email) => { // deletes ALL such email instances in the database
     axios.delete(`${process.env.REACT_APP_HOST}/api/delete/${email}`).then((response) => {
@@ -40,6 +61,7 @@ const CurrentEntries = () => {
         setEntryList(entryListCopy)
       }
     }) //close .then()
+    window.location.reload(false);
   }
 
   // UPDATE (PUT)
@@ -62,6 +84,7 @@ const CurrentEntries = () => {
     for (let i = 0; i < updateInputs.length; i++) {
       updateInputs[i].value = ''
     }
+    window.location.reload(false);
   }
 
 
@@ -81,6 +104,10 @@ const CurrentEntries = () => {
         setEntryList(entryListCopy)
       }
     }) //close .then()
+  
+
+
+
     
     // ADD A NEW USER TO THE BANNED LIST
     // BELOW THIS IS SOME NEW CODE
@@ -98,9 +125,7 @@ const CurrentEntries = () => {
 
     }
     
-    function refreshPage() {
-      window.location.reload(false);
-    }
+    
     // Run the get method we have 
 
 
@@ -108,6 +133,67 @@ const CurrentEntries = () => {
     if (firstnamebig.length > 0 && lastnamebig.length > 0 && emailbig.length > 0) {
       submitEntryLocal(emailbig, firstnamebig, lastnamebig); refreshPage();
     }
+
+
+    function refreshPage() {
+      window.location.reload(false);
+    }
+  }
+
+
+
+
+  const unbanEmail = (emailbig, firstnamebig, lastnamebig) => { // replaces ALL such email instances in the database
+    
+
+    // this does not work. I do not know why
+    axios.delete(`${process.env.REACT_APP_HOST}/api/deleteban/${emailbig}`).then((response) => {
+      let objToDelete = getbannedObjectByValue(emailbig)
+      const index = bannedentryList.indexOf(objToDelete) // deletes ONE instance in the state var
+      if (index > -1) {
+        let entryListCopy = [...bannedentryList] // copy
+        entryListCopy.splice(index, 1) // remove index
+        setbannedEntryList(entryListCopy)
+      }
+    }) //close .then(
+
+
+    /// Creating Works
+    function submitEntryLocalbig(firstName, lastName, emailAddress) {
+      axios.post(`${process.env.REACT_APP_HOST}/api/create`, { first: firstName, last: lastName, email: emailAddress }).then((response) => {
+        setEntryList([...entryList, { first_name: firstName, last_name: lastName, email_address: emailAddress }]
+        )
+      })
+
+    }
+    
+    
+    // Run the get method we have 
+
+    // This works
+    // submitentry is looking for a few things. firstname, lastname, emailAddress, we need to feed it these values
+    if (firstnamebig.length > 0 && lastnamebig.length > 0 && emailbig.length > 0) {
+      submitEntryLocalbig(emailbig, firstnamebig, lastnamebig); refreshPage();
+    }
+
+    function refreshPage() {
+      window.location.reload(false);
+    }
+  }
+
+
+  const [nEmail, setNEmail] = useState('')
+  const [pcode, setpcode] = useState('')
+
+  function getObjectByValue(objVal) {
+    let objectWithValue = {}
+    bannedentryList.forEach(entry => {
+      if (Object.values(entry).indexOf(objVal) > -1) { // email value is inside obj inside array
+        console.log('entry', entry)
+        objectWithValue = entry
+      }
+    })
+    return objectWithValue
   }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -212,6 +298,23 @@ const CurrentEntries = () => {
           </div>)
 
         })}
+        <h2 className="editControls editGui">Banned Entries</h2>
+        {bannedentryList.map((val, k) => {
+          return (<div key={k}>
+            <div className="editControls editGui">{val.last_name}, {val.first_name} <span className="emailListed">{val.email_address}</span> </div>
+
+            <div className="editControls editGui">
+
+              <button className='update' onClick={() => {
+                  unbanEmail(val.email_address, val.last_name, val.first_name);
+              }}>unban</button>
+
+              <input type="email" className="updateInput" placeholder={val.email_address}
+                onChange={(e) => setNewEmail(e.target.value)} />
+            </div>
+          </div>)
+
+        })}
         <div className="editField editGui">
           <button id="editButton" onClick={handleEditList}>Edit List</button>
           <button id="doneButton" onClick={handleFinishedEditing}>Finished Editing</button>
@@ -219,6 +322,11 @@ const CurrentEntries = () => {
             placeholder='Enter passcode' onChange={checkPasscode}
             onBlur={(e) => abortPasscodeAttempt(e.target.value)} />
         </div>
+        <button id="submitEmailsButton" className='submitBtn' onClick={() => alert('TODO: Send It!')}>Email Vouchers</button>
+
+
+        
+        
         <button id="submitEmailsButton" className='submitBtn' onClick={() => alert('TODO: Send It!')}>Email Vouchers</button>
 
       </div>
