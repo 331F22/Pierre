@@ -207,7 +207,7 @@ const CurrentEntries = () => {
                 }
               }}>Update</button>
 
-              <button className='update' style= {{buttonStyle}}onClick={() => {
+              <button className='update' onClick={() => {
                 if (newEmail.length > 0) {
                   updateEmail(val.email_address);
                 }
