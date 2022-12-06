@@ -202,7 +202,7 @@ const CurrentEntries = () => {
                 }
               }}>Update</button>
 
-              <button className='update' onClick={() => {
+              <button className='ban' onClick={() => {
                 if (newEmail.length > 0) {
                   updateEmail(val.email_address);
                 }
