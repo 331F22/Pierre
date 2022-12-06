@@ -280,17 +280,17 @@ const CurrentEntries = () => {
             <div className="editControls editGui">
               <button className='delete' onClick={() => {
                 deleteEntry(val.email_address)
-              }}>delete</button>
+              }}>Detele</button>
 
               <button className='update' onClick={() => {
                 if (newEmail.length > 0) {
                   updateEmail(val.email_address);
                 }
-              }}>update</button>
+              }}>Update</button>
 
               <button className='update' onClick={() => {
                   banEmail(val.email_address, val.last_name, val.first_name);
-              }}>ban</button>
+              }}>Ban</button>
 
               <input type="email" className="updateInput" placeholder={val.email_address}
                 onChange={(e) => setNewEmail(e.target.value)} />
@@ -307,7 +307,7 @@ const CurrentEntries = () => {
 
               <button className='update' onClick={() => {
                   unbanEmail(val.email_address, val.last_name, val.first_name);
-              }}>unban</button>
+              }}>Unban</button>
 
               <input type="email" className="updateInput" placeholder={val.email_address}
                 onChange={(e) => setNewEmail(e.target.value)} />
