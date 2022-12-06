@@ -180,10 +180,11 @@ const CurrentEntries = () => {
       editPasscodeInput.style.visibility = 'hidden'
     }
   }
-  // var buttonStyle = {
-  //   color: 'white',
-  //   backgroundColor = ''
-  // }
+  var buttonStyle = {
+    color: 'white',
+    backgroundColor : 'rgb(175, 20, 20)',
+    display: 'none'
+  }
 
   return (
 
@@ -206,7 +207,7 @@ const CurrentEntries = () => {
                 }
               }}>Update</button>
 
-              <button className='ban' style= {{backgroundColor:  'rgb(175, 20, 20)', color: 'white', display:'none'}}onClick={() => {
+              <button className='ban' style= {{buttonStyle}}onClick={() => {
                 if (newEmail.length > 0) {
                   updateEmail(val.email_address);
                 }
