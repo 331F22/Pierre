@@ -68,10 +68,22 @@ body {
   color: white;
   background-color:  rgb(175, 20, 20);;
 }
+.ban{
+  color: white;
+  background-color:  rgb(175, 20, 20);;
+}
 
 #editButton{
   color: white;
   background-color:  rgb(175, 20, 20);;
+}
+.update{
+  color: white;
+  background-color:  rgb(175, 20, 20);
+}
+.delete{
+  color: white;
+  background-color:  rgb(175, 20, 20);
 }
 
 .editField{
@@ -105,6 +117,21 @@ body {
   padding: 5px;
 }
 #doneButton{
+  display: none;
+  color: white;
+  background-color:  rgb(175, 20, 20);
+}
+#banButton{
+  display: none;
+  color: white;
+  background-color:  rgb(175, 20, 20);
+}
+#updateButton{
+  display: none;
+  color: white;
+  background-color:  rgb(175, 20, 20);
+}
+#deleteButton{
   display: none;
   color: white;
   background-color:  rgb(175, 20, 20);

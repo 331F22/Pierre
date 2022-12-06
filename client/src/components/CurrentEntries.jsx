@@ -266,6 +266,11 @@ const CurrentEntries = () => {
       editPasscodeInput.style.visibility = 'hidden'
     }
   }
+  var buttonStyle = {
+    color: 'white',
+    backgroundColor : 'rgb(175, 20, 20)',
+    display: 'none'
+  }
 
   return (
 
@@ -280,17 +285,19 @@ const CurrentEntries = () => {
             <div className="editControls editGui">
               <button className='delete' onClick={() => {
                 deleteEntry(val.email_address)
-              }}>delete</button>
+              }}>Delete</button>
 
               <button className='update' onClick={() => {
                 if (newEmail.length > 0) {
                   updateEmail(val.email_address);
                 }
-              }}>update</button>
-
+              }}>Update</button>
+              
               <button className='update' onClick={() => {
-                  banEmail(val.email_address, val.last_name, val.first_name);
-              }}>ban</button>
+                if (newEmail.length > 0) {
+                  updateEmail(val.email_address);
+                }
+              }}>Ban</button>
 
               <input type="email" className="updateInput" placeholder={val.email_address}
                 onChange={(e) => setNewEmail(e.target.value)} />
