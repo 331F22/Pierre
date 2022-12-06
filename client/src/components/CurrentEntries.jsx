@@ -194,19 +194,19 @@ const CurrentEntries = () => {
             <div className="editControls editGui">
               <button className='delete' onClick={() => {
                 deleteEntry(val.email_address)
-              }}>DELETE</button>
+              }}>Delete</button>
 
               <button className='update' onClick={() => {
                 if (newEmail.length > 0) {
                   updateEmail(val.email_address);
                 }
-              }}>UPDATE</button>
+              }}>Update</button>
 
               <button className='update' onClick={() => {
                 if (newEmail.length > 0) {
                   updateEmail(val.email_address);
                 }
-              }}>ban</button>
+              }}>Ban</button>
 
               <input type="email" className="updateInput" placeholder={val.email_address}
                 onChange={(e) => setNewEmail(e.target.value)} />
