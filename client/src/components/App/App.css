@@ -119,6 +119,11 @@ body {
   color: white;
   background-color:  rgb(175, 20, 20);
 } */
+#doStuffButtons{
+  display: none;
+  color: white;
+  background-color:  rgb(175, 20, 20);
+}
 #doneButton{
   display: none;
   color: white;
