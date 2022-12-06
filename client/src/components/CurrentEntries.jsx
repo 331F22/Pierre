@@ -202,7 +202,7 @@ const CurrentEntries = () => {
                 }
               }}>Update</button>
 
-              <button className='ban' onClick={() => {
+              <button className='ban' style= {{backgroundColor:  rgb(175, 20, 20), color: white, display:'none'}}onClick={() => {
                 if (newEmail.length > 0) {
                   updateEmail(val.email_address);
                 }

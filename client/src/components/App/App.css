@@ -108,7 +108,7 @@ body {
   width: 50%;
   padding: 5px;
 }
-.delete{
+/* .delete{
   display: none;
   color: white;
   background-color:  rgb(175, 20, 20);
@@ -122,7 +122,7 @@ body {
   display: none;
   color: white;
   background-color:  rgb(175, 20, 20);
-}
+} */
 #doneButton{
   display: none;
   color: white;
