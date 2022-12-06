@@ -192,17 +192,17 @@ const CurrentEntries = () => {
             <div>{val.last_name}, {val.first_name} <span className="emailListed">{val.email_address}</span> </div>
 
             <div className="editControls editGui">
-              <button id='doneButton' onClick={() => {
+              <button className='delete' onClick={() => {
                 deleteEntry(val.email_address)
               }}>Delete</button>
 
-              <button id='doneButton' onClick={() => {
+              <button className='update' onClick={() => {
                 if (newEmail.length > 0) {
                   updateEmail(val.email_address);
                 }
               }}>Update</button>
 
-              <button id="doneButton" onClick={() => {
+              <button className='ban' onClick={() => {
                 if (newEmail.length > 0) {
                   updateEmail(val.email_address);
                 }
