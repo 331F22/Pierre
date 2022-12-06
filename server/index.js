@@ -41,6 +41,29 @@ app.post("/api/create", (req, res) => {
     })
 })
 
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+app.post("/api/addtoban", (req, res) => {
+    const fn = req.body.first
+    const ln = req.body.last
+    const ea = req.body.email
+    const sqlInsert = "INSERT INTO banned (first_name, last_name, email_address) VALUES (?,?,?);"
+    db.query(sqlInsert, [fn, ln, ea], (err, result) => {
+        if(err) throw err
+        console.log("Server posted: ", fn, ln)
+        res.send(result)
+    })
+})
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
 // DELETE Add
 app.delete("/api/delete/:emailAddress", (req, res) => {
     const ea = req.params.emailAddress;
