@@ -113,6 +113,21 @@ body {
   color: white;
   background-color:  rgb(175, 20, 20);
 }
+#banButton{
+  display: none;
+  color: white;
+  background-color:  rgb(175, 20, 20);
+}
+#updateButton{
+  display: none;
+  color: white;
+  background-color:  rgb(175, 20, 20);
+}
+#deleteButton{
+  display: none;
+  color: white;
+  background-color:  rgb(175, 20, 20);
+}
 #editPasscodeInput{
   visibility: hidden;
   width: 50%;

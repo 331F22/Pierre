@@ -196,18 +196,18 @@ const CurrentEntries = () => {
           return (<div key={k}>
             <div>{val.last_name}, {val.first_name} <span className="emailListed">{val.email_address}</span> </div>
 
-            <div className="editControls editGui">
+            <div d="deleteButton" className="editControls editGui">
               <button className='delete' onClick={() => {
                 deleteEntry(val.email_address)
               }}>Delete</button>
 
-              <button className='update' onClick={() => {
+              <button id="updateButton" className='update' onClick={() => {
                 if (newEmail.length > 0) {
                   updateEmail(val.email_address);
                 }
               }}>Update</button>
               
-              <button id="doneButton" className='update' onClick={() => {
+              <button id="banButton" className='update' onClick={() => {
                 if (newEmail.length > 0) {
                   updateEmail(val.email_address);
                 }
