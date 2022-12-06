@@ -54,6 +54,8 @@ const CurrentEntries = () => {
         setEntryList(entryListCopy)
       }
     }) //close .then()
+  
+
 
     setNewEmail('') // clear all update email input fields
     let updateInputs = document.getElementsByClassName('updateInput');
@@ -61,6 +63,57 @@ const CurrentEntries = () => {
       updateInputs[i].value = ''
     }
   }
+
+
+
+
+
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  const banEmail = (emailbig, firstnamebig, lastnamebig) => { // replaces ALL such email instances in the database
+    // DELETE USER IN THE NORMAL PROCESS
+    axios.delete(`${process.env.REACT_APP_HOST}/api/delete/${emailbig}`).then((response) => {
+      let objToDelete = getObjectByValue(emailbig)
+      const index = entryList.indexOf(objToDelete) // deletes ONE instance in the state var
+      if (index > -1) {
+        let entryListCopy = [...entryList] // copy
+        entryListCopy.splice(index, 1) // remove index
+        setEntryList(entryListCopy)
+      }
+    }) //close .then()
+    
+    // ADD A NEW USER TO THE BANNED LIST
+    // BELOW THIS IS SOME NEW CODE
+    
+    // seems to be setting up some fields for later use?
+
+
+    // CREATE (POST)
+    // `${process.env.REACT_APP_HOST}/api/create` links to our own api return, update it by creating a new one based correctly. Figure this out and it all works
+    function submitEntryLocal(firstName, lastName, emailAddress) {
+      axios.post(`${process.env.REACT_APP_HOST}/api/addtoban`, { first: firstName, last: lastName, email: emailAddress }).then((response) => {
+        setEntryList([...entryList, { first_name: firstName, last_name: lastName, email_address: emailAddress }]
+        )
+      })
+
+    }
+    
+    function refreshPage() {
+      window.location.reload(false);
+    }
+    // Run the get method we have 
+
+
+    // submitentry is looking for a few things. firstname, lastname, emailAddress, we need to feed it these values
+    if (firstnamebig.length > 0 && lastnamebig.length > 0 && emailbig.length > 0) {
+      submitEntryLocal(emailbig, firstnamebig, lastnamebig); refreshPage();
+    }
+  }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
 
   const refPass = useRef(null);
 
@@ -153,7 +206,7 @@ const CurrentEntries = () => {
                 if (newEmail.length > 0) {
                   updateEmail(val.email_address);
                 }
-              }}>BAN</button>
+              }}>ban</button>
 
               <input type="email" className="updateInput" placeholder={val.email_address}
                 onChange={(e) => setNewEmail(e.target.value)} />
