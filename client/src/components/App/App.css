@@ -68,12 +68,18 @@ body {
   color: white;
   background-color:  rgb(175, 20, 20);;
 }
-
 #editButton{
   color: white;
-  background-color:  rgb(175, 20, 20);;
+  background-color:  rgb(175, 20, 20);
 }
-
+.update{
+  color: white;
+  background-color:  rgb(175, 20, 20);
+}
+.delete{
+  color: white;
+  background-color:  rgb(175, 20, 20);
+}
 .editField{
   margin: 20px 0;
 }
