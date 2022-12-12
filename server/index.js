@@ -50,6 +50,17 @@ app.get("/api/readtickets", (req, res) => {
     })
 })
 
+// READ
+app.get("/api/readNumVol", (req, res) => {
+    const sqlSelect = "SELECT COUNT(*) AS num_unsent FROM volunteers WHERE email_sent = 0;"
+    db.query(sqlSelect, (err, result) => {
+        if(err){
+            throw err;
+        }
+        res.send(result);
+    })
+})
+
 // CREATE
 app.post("/api/create", (req, res) => {
     const fn = req.body.first
