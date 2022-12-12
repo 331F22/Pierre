@@ -6,12 +6,28 @@ const CurrentEntries = () => {
   const SECRET = process.env.REACT_APP_PASSCODE
 
   const [entryList, setEntryList] = useState([])
+  const [volList, setVolList] = useState([])
+  const [ticketList, setTicketList] = useState([])
 
 
   // READ (GET)
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_HOST}/api/read`).then((response) => {
       setEntryList(response.data)
+    })
+  }, [])
+  
+  // READ (GET)
+  useEffect(() => {
+    axios.get(`${process.env.REACT_APP_HOST}/api/readvol`).then((response) => {
+      setVolList(response.data)
+    })
+  }, [])
+
+  // READ (GET)
+  useEffect(() => {
+    axios.get(`${process.env.REACT_APP_HOST}/api/readtickets`).then((response) => {
+      setTicketList(response.data)
     })
   }, [])
 
