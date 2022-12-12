@@ -8,6 +8,7 @@ const CurrentEntries = () => {
   const [entryList, setEntryList] = useState([])
   const [volList, setVolList] = useState([])
   const [ticketList, setTicketList] = useState([])
+  const [numVol, setNumVol] = useState('')
 
 
   // READ (GET)
@@ -28,6 +29,13 @@ const CurrentEntries = () => {
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_HOST}/api/readtickets`).then((response) => {
       setTicketList(response.data)
+    })
+  }, [])
+  
+  //READ (GET)
+  useEffect(() => {
+    axios.get(`${process.env.REACT_APP_HOST}/api/readNumVol`).then((response) => {
+      setNumVol(response.data)
     })
   }, [])
 
