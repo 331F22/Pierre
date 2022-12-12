@@ -41,6 +41,8 @@ https://docs.google.com/presentation/d/1wxopk-MX0h20kNoUodDUsIpmZx__hyiakjoST_8Y
 - Two or three concise, well written, organized paragraphs documenting feature functionality and how it was achieved;
 
 Maybe break into each section? - Database management, action on button press, email sending (SMTP server, etc), etc
+
+- A key component of this project was accessing the database to retreive both the information of volunteers who have not received a voucher, and the information of un-issued tickets. This was done using hooks and state variables so that once the page loaded, all of the information needed to populate the emails was easily accessable. To call the queries on the database itself, Axios was used to call an api which executed the SQL and returned the necessary information.
   &nbsp;  
     
     
