@@ -28,6 +28,28 @@ app.get("/api/read", (req, res) => {
     })
 })
 
+// READ
+app.get("/api/readvol", (req, res) => {
+    const sqlSelect = "SELECT * FROM volunteers WHERE email_sent = 0;"
+    db.query(sqlSelect, (err, result) => {
+        if(err){
+            throw err;
+        }
+        res.send(result);
+    })
+})
+
+// READ
+app.get("/api/readtickets", (req, res) => {
+    const sqlSelect = "SELECT * FROM tickets WHERE is_issued = 0;"
+    db.query(sqlSelect, (err, result) => {
+        if(err){
+            throw err;
+        }
+        res.send(result);
+    })
+})
+
 // CREATE
 app.post("/api/create", (req, res) => {
     const fn = req.body.first
