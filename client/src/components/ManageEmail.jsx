@@ -24,6 +24,14 @@ This React component was initially created by Mason Williamson, Lauren Good and 
 CSCI 331 - Web Development on request of our instructor, Daniel DeFrance. This component is not a deliverable or complete product, 
 and therefore is acceptable for any other developer to use this code to further it's design.
 
+IMPORTANT NOTES:
+ - The formatting may look a little weird in some areas. All of the css done in this project has happened in 
+  App.css. There is only a bit of css inside of ManageEmail.css that only pertains to the color of the buttons
+  when they are on or off. If needed, App.css can be exchanged for another group's work to switch around the
+  interface of the website.
+ - The Adobe XD prototype for this component can be found here:
+    https://xd.adobe.com/view/f82d2082-87ed-4eeb-b412-29f4483fccf3-ad7e/?hints=off
+
 */
 
 import React, { useState } from 'react';
