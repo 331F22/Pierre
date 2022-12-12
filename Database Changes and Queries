@@ -1,0 +1,29 @@
+--------------- Database Changes ---------------
+
+ALTER TABLE `tickets` 
+MODIFY COLUMN ticketCode varchar(9);
+
+ALTER TABLE `volunteers` 
+ADD `email_sent` tinyint(1) NOT NULL DEFAULT '0';
+
+
+
+
+--------------- Queries ---------------
+
+SELECT * FROM `volunteers` 
+WHERE  email_sent = 0;
+
+SELECT COUNT(*) FROM `volunteers` AS number_unsent 
+WHERE  email_sent = 0;
+
+SELECT * FROM `tickets` 
+WHERE  is_issued = 0 
+LIMIT number_unsent;
+
+
+UPDATE volunteers SET email_sent = 1 WHERE id IN (<List of updated volunteer IDs>);
+
+UPDATE tickets SET is_issued = 1 WHERE ticketCode IN (<List of ticket codes>);
+
+UPDATE tickets SET issued_to = <Volunteer Name> WHERE ticketCode = <ticket code>;
