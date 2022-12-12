@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import axios from 'axios'
+import EmailSender from "./EmailingFunctions";
 
 const CurrentEntries = () => {
 
@@ -177,7 +178,7 @@ const CurrentEntries = () => {
             placeholder='Enter passcode' onChange={checkPasscode}
             onBlur={(e) => abortPasscodeAttempt(e.target.value)} />
         </div>
-        <button id="submitEmailsButton" className='submitBtn' onClick={() => alert('TODO: Send It!')}>Email Vouchers</button>
+        <button id="submitEmailsButton" className='submitBtn' onClick={EmailSender}>Email Vouchers</button>
 
       </div>
     </div>
