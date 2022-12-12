@@ -6,6 +6,7 @@ import ManageEmail from '../ManageEmail.jsx';
 import Header from '../Header.js';
 import Footer from '../Footer.js';
 import logo from "../header.jpg";
+import Feeter from '../Footer.jsx';
 
 
 function App() {
@@ -23,6 +24,8 @@ function App() {
       <CurrentEntries />
       <hr />
       <Footer />
+      <hr />
+      <Feeter />
       <hr />
     </div>
   )
