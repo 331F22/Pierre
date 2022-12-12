@@ -61,7 +61,9 @@ Maybe break into each section? - Database management, action on button press, em
   &nbsp;  
     
 ## Conclusion 
-- What you learned, what worked, what didn't, what you would do differently or the same.
+- What you learned, what worked, what didn't, what you would do differently or the same.  
+#### Alex
+- I think the most helpful thing we did for this project was build a clear structure from the beginning. Having to divide up tasks for the React Project v1.0 assignment and presenting early in the project meant that we needed to have our feature and implementations planned out. This meant that I always had a clear direction of what I needed to work on, and how it fit into the project as a whole. I do think one slight drawback of planning so early was that I didn’t really shift from my initial approach to the problem – I just used the plan I came up with in that first week. While it worked out just fine and my method was successful, in hindsight I do think it would have been interesting if we had discussed the problem more in our group, as it would be fun to see what other kinds of approaches were possible.
   &nbsp;  
       
 ## References 
