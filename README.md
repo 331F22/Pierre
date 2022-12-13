@@ -25,8 +25,6 @@ BSF Volunteer Tracker II - Manage volunteer vouchers in database and send vouche
   &nbsp;  
     
 ## Tech summary
-- Database management, action on button press, email sending (SMTP server, etc), etc
-
 - A key component of this project was accessing the database to retreive both the information of volunteers who have not received a voucher, and the information of un-issued tickets. This was done using hooks and state variables so that once the page loaded, all of the information needed to populate the emails was easily accessable. To call the queries on the database itself, Axios was used to call an api which executed the SQL and returned the necessary information.  
   &nbsp;  
     
