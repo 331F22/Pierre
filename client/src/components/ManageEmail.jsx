@@ -1,116 +1,175 @@
+/*
+
+This React component is a form for creating and sending a custom email or a template email. 
+The recipient of the email can be either "All", "Scheduled Volunteers" or a custom recipient, depending on which button is clicked. 
+The subject and body of the email can be filled in by the user, or a template can be selected by clicking 
+one of the three buttons at the bottom. 
+When the "Clear" button is clicked, all fields are reset. 
+When the "Send" button is clicked, a confirmation prompt appears and, if confirmed, the email is sent.
+
+To connect this frontend component to a MariaDB database, a backend developer would need to add logic for querying 
+the database to retrieve the list of recipients and, when the "Send" button is clicked, insert the email data into the database. 
+For example, when the "All" button is clicked, the backend could query the database for all email addresses to populate 
+the recipient field. 
+When the "Send" button is clicked, the backend could insert the recipient, subject, and body into the appropriate 
+tables in the database.
+
+At the bottom, there is some inserted logic and some comments to dictate what recipient should be emailed and what the content
+of the email should be. 
+For each bit of logic, create a SQL query to insert the recipient, subject, and body of the email into the 
+appropriate table in the database. 
+
+
+This React component was initially created by Mason Williamson, Lauren Good and Payton Morris. This project was done for
+CSCI 331 - Web Development on request of our instructor, Daniel DeFrance. This component is not a deliverable or complete product, 
+and therefore is acceptable for any other developer to use this code to further it's design.
+
+IMPORTANT NOTES:
+ - The formatting may look a little weird in some areas. All of the css done in this project has happened in 
+  App.css. There is only a bit of css inside of ManageEmail.css that only pertains to the color of the buttons
+  when they are on or off. If needed, App.css can be exchanged for another group's work to switch around the
+  interface of the website.
+ - The Adobe XD prototype for this component can be found here:
+    https://xd.adobe.com/view/f82d2082-87ed-4eeb-b412-29f4483fccf3-ad7e/?hints=off
+
+*/
+
 import React, { useState } from 'react';
 import './ManageEmail.css';
 
 const ManageEmail = (props) => {
 
-  return ( 
-    const [button1,setButton1] = useState(false);
-    const [button2,setButton2] = useState(false);
-    const [recipientBox, setRecipientBox] = useState("");
-  
-    const handleButton1Click = () => {
-        setButton1(true);
-        setButton2(false);
-        setRecipientBox("");
-      }
-    
-    const handleButton2Click = () => {
-        setButton1(false);
-        setButton2(true);
-        setRecipientBox("");
-      }
-    
-    const [button3,setButton3] = useState(false);
-    const [button4,setButton4] = useState(false);
-    const [button5,setButton5] = useState(false);
-    const [subjectBox, setSubjectBox] = useState("");
-    const [bodyBox, setBodyBox] = useState("");
-    
-    const handleButton3Click = () => {
-        setButton3(true);
-        setButton4(false);
-        setButton5(false);
-        setSubjectBox("");
-        setBodyBox("");
-      }
-    
-    const handleButton4Click = () => {
-        setButton3(false);
-        setButton4(true);
-        setButton5(false);
-        setSubjectBox("");
-        setBodyBox("");
-      }
-    
-    const handleButton5Click = () => {
-        setButton3(false);
-        setButton4(false);
-        setButton5(true);
-      }
-    
-    return ( 
-        <div>
-        <h2>New Email</h2>
-        <label>Send to:</label>
-        <div>
-            <input className="emailInput" type="text" value={recipientBox} onChange={e => {
-                setRecipientBox(e.target.value)
-                setButton1(false) 
-                setButton2(false)
-            }}/>   
-            <button onClick={handleButton1Click} className={button1 ? 'on' : 'off'}>All</button>
-            <button onClick={handleButton2Click} className={button2 ? 'on' : 'off'}>Scheduled Volunteers</button>
-        </div>
-        <label>Subject:</label>
-        <div>   
-            <input className="emailInput" type="text" value={subjectBox} onChange={e => {
-                setSubjectBox(e.target.value)
-                setButton3(false) 
-                setButton4(false)
-                setButton5(false)
-            }}/> 
-      </div>
-      <label>Body:</label>
-      <div>
-            <button onClick={handleButton3Click} className={button3 ? 'on' : 'off'}>Voucher Template</button>
-            <button onClick={handleButton4Click} className={button4 ? 'on' : 'off'}>Cancellation Template</button>
-            <button onClick={handleButton5Click} className={button5 ? 'on' : 'off'}>Waiver Template</button>
-    </div>
-    <label>Custom:</label>
-    <div>  
-        <input className="emailInput" type="text" value={bodyBox} onChange={e => {
-            setBodyBox(e.target.value)
-            setButton3(false) 
-            setButton4(false)
-            setButton5(false)
-        }}/>
-    </div>
-    <div>
-        <button className="clearBtn"
-            onClick={() => {
-                const confirmBox = window.confirm(
-                "Are you sure you want to clear all fields?"
-            );
+/*
+    "Send to" useState declarations
+*/
 
-          if (confirmBox === true) {
-            setRecipientBox("");
-            setSubjectBox("");
-            setBodyBox("");
-            setButton1(false);
-            setButton2(false);
-            setButton3(false);
-            setButton4(false);
-            setButton5(false);
-          }
-    } }
-    >Clear</button>
-    <button className="sendBtn"
-      onClick={() => {
-        const confirmBox = window.confirm(
-          "Are you sure you want to send this email?"
-          ); 
-          if (confirmBox === true) {
-            if (button1 === true) {
+  // "All" button
+  const [button1,setButton1] = useState(false);
+  // "Scheduled volunteers" button
+  const [button2,setButton2] = useState(false);
+  // Custom recipient input box
+  const [recipientBox, setRecipientBox] = useState("");
+
+  // If the "All" button is selected...
+  const handleButton1Click = () => {
+    setButton1(true);
+    setButton2(false);
+    setRecipientBox("");
+  }
+
+  // If the "Scheduled Volunteers" button is selected...
+  const handleButton2Click = () => {
+    setButton1(false);
+    setButton2(true);
+    setRecipientBox("");
+  }
+
+/*
+    Subject and Body declarations:
+*/
+
+  // "Voucher template" button 
+  const [button3,setButton3] = useState(false);
+  // "Cancellation template" button
+  const [button4,setButton4] = useState(false);
+  // "Waiver template" button
+  const [button5,setButton5] = useState(false);
+  // Custom subject input box
+  const [subjectBox, setSubjectBox] = useState("");
+  // Custom body input box
+  const [bodyBox, setBodyBox] = useState("");
+
+  // Voucher template button is selected...
+  const handleButton3Click = () => {
+    setButton3(true);
+    setButton4(false);
+    setButton5(false);
+    setSubjectBox("");
+    setBodyBox("");
+  }
+
+  // Cancellation template button is selected...
+  const handleButton4Click = () => {
+    setButton3(false);
+    setButton4(true);
+    setButton5(false);
+    setSubjectBox("");
+    setBodyBox("");
+  }
+
+  // Waiver template button is selected...
+  const handleButton5Click = () => {
+    setButton3(false);
+    setButton4(false);
+    setButton5(true);
+  }
+
+
+  return ( 
+
+      <div>
+      <h2>New Email</h2>
+      <label>Send to:</label>
+      <div>
+        <input type="text" value={recipientBox} onChange={e => {  // Recipient input box
+          setRecipientBox(e.target.value)
+          setButton1(false) 
+          setButton2(false)
+          }}/>
+        <button onClick={handleButton1Click} className={button1 ? 'on' : 'off'}>All</button>    {/*All button */}
+        <button onClick={handleButton2Click} className={button2 ? 'on' : 'off'}>Scheduled Volunteers</button>   {/*Scheduled Voluteers button */}
+      </div><label>Subject:</label><div>
+        <input type="text" value={subjectBox} onChange={e => { //Subject input box
+          setSubjectBox(e.target.value)
+          setButton3(false) 
+          setButton4(false)
+          setButton5(false)
+          }}/>
+      </div><label>Body:</label><div>
+        <button onClick={handleButton3Click} className={button3 ? 'on' : 'off'}>Voucher Template</button>       {/*Voucher template button */}
+        <button onClick={handleButton4Click} className={button4 ? 'on' : 'off'}>Cancellation Template</button>  {/*Cancellation template button */}
+        <button onClick={handleButton5Click} className={button5 ? 'on' : 'off'}>Waiver Template</button>        {/*Waiver template button */}
+      </div><label>Custom:</label><div>
+        <input type="text" value={bodyBox} onChange={e => {   // Body input box
+          setBodyBox(e.target.value)
+          setButton3(false) 
+          setButton4(false)
+          setButton5(false)
+          }}/>
+      </div><div>
+        <button className="clearBtn"                          // Clear button
+          onClick={() => {
+            const confirmBox = window.confirm(
+              "Are you sure you want to clear all fields?"
+            );
+            if (confirmBox === true) {
+              setRecipientBox("");
+              setSubjectBox("");
+              setBodyBox("");
+              setButton1(false);
+              setButton2(false);
+              setButton3(false);
+              setButton4(false);
+              setButton5(false);
+            }
+          } }
+        >Clear</button>
+        <button className="sendBtn"                         // send button
+          onClick={() => {
+            const confirmBox = window.confirm(
+              "Are you sure you want to send this email?"
+            );
+            if (confirmBox === true) {
+
+            /*
+
+              For each comment below, the following logic determines who the email is sent to, as well as the subject and body of the
+              email. Use the comments as a guide to understand what each button means and extend this functionality to add the email
+              data to the backend database. From there, the data can be used to send an email using whatever API is running.
+
+            */
+
+              if (button1 === true) {
                 /* 
                 ADD BACKEND FUNCTIONALITY
                 Recipient: select ALL entries in the database to send this email to 
@@ -173,8 +232,8 @@ const ManageEmail = (props) => {
             }
           } }
         >Send Email</button>
-         </div>
-</div>
-)
+      </div>
+    </div>
+  )
 }
 export default ManageEmail;
