@@ -111,7 +111,6 @@ h2{
   border: none;
   display:block;
   font-size: 8px;
-
   cursor: text;
   display: inline-block;
   text-align: start;
@@ -128,44 +127,6 @@ label {
   color: grey;
   color: translucent;
 }
-h2{
-  font: bold;
-}
-p {
-  text-align: center;
-  color: grey;
-}
-footer {
-  background-color:rgba(235, 135, 135, 0.142);
-}
-.email{
-  text-align: left;
-  margin-left: 30%;
-}
-.custom{
-  text-align: left;
-  margin-left: 30%;
-}
-.subject{
-  display: block;
-  font-size: 15px;
-  text-align: left;
-  margin-left: 35%;
-  color: grey;
-  border-radius: 5px;
-  border-color: rgba(233, 61, 61, 0.61);;
-  background-color: transparent;
-}
-.OptionBtn {
-  display: block;
-  font-size: 15px;
-  text-align: left;
-  margin-left: 20%;
-  color: rgba(233, 61, 61, 0.794);
-  border-radius: 5px;
-  border-color: rgba(233, 61, 61, 0.61);
-  background-color: transparent;
-}
 footer {
   text-align: center;
   background-color: #b01b1f;;
@@ -174,33 +135,11 @@ footer {
 h3 {
   font-size: 25px;
 }
-.clearBtn{
-  display: block;
-  display: grid;
+p{
   font-size: 15px;
-  text-align: left;
-  margin-left: 20%;
-  color: rgba(233, 61, 61, 0.794);;
-  border-radius: 5px;
-  border-color: rgba(233, 61, 61, 0.61);;
-  background-color: transparent;
 }
-.sendBtn{
-  display: block;
-  font-size: 15px;
-  text-align: left;
-  margin-left: 20%;
-  color: rgba(233, 61, 61, 0.794);
-  border-radius: 5px;
-  border-color: rgba(233, 61, 61, 0.61);
-  background-color: transparent;
-}
-.custom {
-  display: block;
-  font-size: 20px;;
-  text-align: left;
-  border-radius: 10px;
-  border-color: rgba(233, 61, 61, 0.61);
+a{
+  color: white;
 }
 .headLogo{
   width: 100px;
