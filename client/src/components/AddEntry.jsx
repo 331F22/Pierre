@@ -37,17 +37,17 @@ const AddEntry = () => {
         <div id='userInput'>
           <div class="form-floating mb-3">
             <label htmlFor="firstName">First Name</label>
-            <input ref={ref1} id="firstName" type="text" name="firstName" onChange={(e) => setFirstName(e.target.value)} />
+            <input className="signInput" ref={ref1} id="firstName" type="text" name="firstName" onChange={(e) => setFirstName(e.target.value)} />
           </div>
           <div class="form-floating mb-3">
             <label htmlFor="lastName">Last Name</label>
-            <input ref={ref2} id="lastName" type="text" name="lastName" onChange={(e) => setLastName(e.target.value)} />
+            <input className="signInput" ref={ref2} id="lastName" type="text" name="lastName" onChange={(e) => setLastName(e.target.value)} />
           </div><br />
           <div class="form-floating mb-3"  >
             <label htmlFor="email">Email Address</label>
-            <input ref={ref3} id="email" type="email" name="email" onChange={(e) => setEmailAddress(e.target.value)} />
+            <input className="signInput" ref={ref3} id="email" type="email" name="email" onChange={(e) => setEmailAddress(e.target.value)} />
           </div>
-          <button className="submitBtn"
+          <button type="button" class="btn btn-danger" className="submitBtn"
             onClick={() => {
               if (firstName.length > 0 && lastName.length > 0 && emailAddress.length > 0) {
                 submitEntry(); refreshPage();
