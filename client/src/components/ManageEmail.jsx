@@ -111,7 +111,7 @@ const ManageEmail = (props) => {
       <h2>New Email</h2>
       <label>Send to:</label>
       <div>
-        <input type="text" value={recipientBox} onChange={e => {  // Recipient input box
+        <input className="emailInput" type="text" value={recipientBox} onChange={e => {  // Recipient input box
           setRecipientBox(e.target.value)
           setButton1(false) 
           setButton2(false)
@@ -119,7 +119,7 @@ const ManageEmail = (props) => {
         <button onClick={handleButton1Click} className={button1 ? 'on' : 'off'}>All</button>    {/*All button */}
         <button onClick={handleButton2Click} className={button2 ? 'on' : 'off'}>Scheduled Volunteers</button>   {/*Scheduled Voluteers button */}
       </div><label>Subject:</label><div>
-        <input type="text" value={subjectBox} onChange={e => { //Subject input box
+        <input className="emailInput" type="text" value={subjectBox} onChange={e => { //Subject input box
           setSubjectBox(e.target.value)
           setButton3(false) 
           setButton4(false)
@@ -130,7 +130,7 @@ const ManageEmail = (props) => {
         <button onClick={handleButton4Click} className={button4 ? 'on' : 'off'}>Cancellation Template</button>  {/*Cancellation template button */}
         <button onClick={handleButton5Click} className={button5 ? 'on' : 'off'}>Waiver Template</button>        {/*Waiver template button */}
       </div><label>Custom:</label><div>
-        <input type="text" value={bodyBox} onChange={e => {   // Body input box
+        <input className="emailInput" type="text" value={bodyBox} onChange={e => {   // Body input box
           setBodyBox(e.target.value)
           setButton3(false) 
           setButton4(false)
